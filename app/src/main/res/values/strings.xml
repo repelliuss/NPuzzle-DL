@@ -1,3 +1,6 @@
 <resources>
-    <string name="app_name">NPuzzle</string>
+    <string name="app_name" translatable="false">NPuzzle</string>
+    <string name="txt_num_row">Number of Rows</string>
+    <string name="txt_num_column">Number of Columns</string>
+    <string name="txt_start">Start</string>
 </resources>
