@@ -37,8 +37,8 @@ public final class MainActivity extends AppCompatActivity {
 
     /**
      * Parses user input to integer and adds to bundle
-     * board size if valid.
-     * @return true if input 2 < size < 10, false otherwise
+     * boardSize if input is valid.
+     * @return true if 2 < size < 10, false otherwise
      */
     private boolean getBoardSize() {
 
