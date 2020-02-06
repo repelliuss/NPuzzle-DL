@@ -61,7 +61,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         }
     }
 
-    protected SlidePuzzle(Index2D argPosBlank) {
+    protected SlidePuzzle(Index2D argPosBlank) throws IllegalArgumentException {
 
         if(argPosBlank == null) throw new IllegalArgumentException("argPosBlank is null");
 
