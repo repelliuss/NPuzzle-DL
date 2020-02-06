@@ -21,10 +21,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         T value;
 
        public Piece(Cell argId, final T argValue) {
-         if(id == null) throw new IllegalArgumentException("argId is null");
-
-         id = argId;
-         value = argValue;
+         setPiece(argId, argValue);
        }
 
         @Override
@@ -39,6 +36,13 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         public void setPiece(final Piece other) {
             setId(other.getId());
             setValue(other.getValue());
+        }
+
+        public void setPiece(Cell argId, final T argValue) {
+            if(id == null) throw new IllegalArgumentException("argId is null");
+
+            id = argId;
+            value = argValue;
         }
     }
 
