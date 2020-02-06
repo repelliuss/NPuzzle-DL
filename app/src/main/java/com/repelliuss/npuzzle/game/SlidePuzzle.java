@@ -20,7 +20,10 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         Cell id;
         T value;
 
+        @Override
         public Cell getId() { return id; }
+
+        @Override
         public T getValue() { return value; }
 
         public void setId(final Cell argId) { id = argId; }
@@ -36,10 +39,12 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         posBlank = argPosBlank;
     }
 
+    @Override
     public Move getLastMove() {
         return lastMove;
     }
 
+    @Override
     public int getMoveCount() {
         return moveCount;
     }
@@ -60,6 +65,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
     protected abstract void setColumn(int argColumn);
     protected abstract void setPiece(Index2D pos, Piece piece);
 
+    @Override
     public boolean move(@NonNull final Move move) {
         if(checkMove(move)) {
             switch(move) {
@@ -86,6 +92,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         return false;
     }
 
+    @Override
     public boolean checkMove(@NonNull final Move move) {
         switch(move) {
             case LEFT:
@@ -101,6 +108,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         }
     }
 
+    @Override
     public boolean checkMove(int yMove, int xMove) {
 
         return  getPosBlank().getY() + yMove < getRow() &&
