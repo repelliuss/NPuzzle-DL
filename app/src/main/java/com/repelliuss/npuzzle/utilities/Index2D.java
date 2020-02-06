@@ -4,6 +4,11 @@ public class Index2D {
     private int y;
     private int x;
 
+    public Index2D() {
+        y = 0;
+        x = 0;
+    }
+
     public Index2D(int argY, int argX) {
         y = argY;
         x = argX;
