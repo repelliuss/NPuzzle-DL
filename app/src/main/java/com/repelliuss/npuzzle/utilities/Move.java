@@ -2,7 +2,7 @@ package com.repelliuss.npuzzle.utilities;
 
 public enum Move {
 
-    NOTHING,
+    STAY,
     LEFT,
     RIGHT,
     UP,
