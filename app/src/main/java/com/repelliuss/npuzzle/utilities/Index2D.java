@@ -32,4 +32,16 @@ public final class Index2D {
     public void decY() {
         --y;
     }
+
+    public static Index2D getRelativeToY(final Index2D index, int deltaY) {
+        return getRelativeTo(index, deltaY, 0);
+    }
+
+    public static Index2D getRelativeToX(final Index2D index, int deltaX) {
+        return getRelativeTo(index, 0, deltaX);
+    }
+
+    public static Index2D getRelativeTo(final Index2D index, int deltaY, int deltaX) {
+        return new Index2D(index.getY() + deltaY, index.getX() + deltaX);
+    }
 }
