@@ -1,6 +1,6 @@
 package com.repelliuss.npuzzle.utilities;
 
-public final class Index2D {
+public class Index2D {
     private int y;
     private int x;
 
