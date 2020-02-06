@@ -17,8 +17,13 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
     }
 
     public class Piece implements BoardPiece<Cell, T> {
+
         Cell id;
         T value;
+
+        public Piece(Cell argID) {
+            setId(argID);
+        }
 
        public Piece(Cell argId, final T argValue) {
          setPiece(argId, argValue);
@@ -28,9 +33,21 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         public Cell getId() { return id; }
 
         @Override
-        public T getValue() { return value; }
+        public T getValue() throws IllegalAccessException {
 
-        public void setId(final Cell argId) { id = argId; }
+            if(id != Cell.VALUE) {
+                throw new IllegalAccessException("Only Pieces with VALUE Id can have a value");
+            }
+
+            return value;
+        }
+
+        public void setId(final Cell argId) throws IllegalArgumentException {
+
+            if(id == null) throw new IllegalArgumentException("argId is null");
+
+           id = argId;
+       }
         public void setValue(final T argValue) { value = argValue; }
 
         public void setPiece(final Piece other) {
@@ -39,10 +56,8 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         }
 
         public void setPiece(Cell argId, final T argValue) {
-            if(id == null) throw new IllegalArgumentException("argId is null");
-
-            id = argId;
-            value = argValue;
+            setId(argId);
+            setValue(argValue);
         }
     }
 
