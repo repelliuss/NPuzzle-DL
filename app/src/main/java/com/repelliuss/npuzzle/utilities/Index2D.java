@@ -13,9 +13,11 @@ public final class Index2D {
         return y;
     }
 
-    public int getX() {
-        return x;
-    }
+    public int getX() { return x; }
+
+    public void setY(int argY) { y = argY; }
+
+    public void setX(int argX) { x = argX; }
 
     public void incX() {
         ++x;
