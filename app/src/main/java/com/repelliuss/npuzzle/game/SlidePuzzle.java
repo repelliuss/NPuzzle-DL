@@ -33,24 +33,13 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         public Cell getId() { return id; }
 
         @Override
-        public T getValue() throws IllegalAccessException {
+        public T getValue() { return value; }
 
-            if(id != Cell.VALUE) {
-                throw new IllegalAccessException("Only Pieces with VALUE Id can have a value");
-            }
+        public void setId(final Cell argId) { id = argId; }
 
-            return value;
-        }
-
-        public void setId(final Cell argId) throws IllegalArgumentException {
-
-            if(id == null) throw new IllegalArgumentException("argId is null");
-
-           id = argId;
-       }
         public void setValue(final T argValue) { value = argValue; }
 
-        public void setPiece(final Piece other) throws IllegalAccessException {
+        public void setPiece(final Piece other) {
             setId(other.getId());
             setValue(other.getValue());
         }
@@ -61,9 +50,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         }
     }
 
-    protected SlidePuzzle(Index2D argPosBlank) throws IllegalArgumentException {
-
-        if(argPosBlank == null) throw new IllegalArgumentException("argPosBlank is null");
+    protected SlidePuzzle(Index2D argPosBlank) {
 
         lastMove = Move.STAY;
         moveCount = 0;
