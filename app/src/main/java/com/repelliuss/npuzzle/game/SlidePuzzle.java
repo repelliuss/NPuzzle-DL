@@ -50,7 +50,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
        }
         public void setValue(final T argValue) { value = argValue; }
 
-        public void setPiece(final Piece other) {
+        public void setPiece(final Piece other) throws IllegalAccessException {
             setId(other.getId());
             setValue(other.getValue());
         }
