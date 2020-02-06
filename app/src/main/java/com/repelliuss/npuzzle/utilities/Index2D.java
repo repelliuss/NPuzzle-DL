@@ -19,6 +19,11 @@ public final class Index2D {
 
     public void setX(int argX) { x = argX; }
 
+    public void setTo(int argY, int argX) {
+        setY(argY);
+        setX(argX);
+    }
+
     public void incX() {
         ++x;
     }
