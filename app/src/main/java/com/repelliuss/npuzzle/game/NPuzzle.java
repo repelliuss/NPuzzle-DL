@@ -2,10 +2,24 @@ package com.repelliuss.npuzzle.game;
 
 import com.repelliuss.npuzzle.utilities.Index2D;
 
-public final class NPuzzle extends SlidePuzzle<int> {
+import java.lang.reflect.Array;
 
-    private Piece[] board;
+public final class NPuzzle extends SlidePuzzle<Integer> {
+
+    private final Piece[] board;
     private int row, column;
+
+    public NPuzzle(int argRow, int argColumn) {
+        super(new Index2D(argRow - 1, argColumn - 1));
+        row = argRow;
+        column = argColumn;
+
+        //noinspection unchecked
+        board = (Piece[]) Array.newInstance(Integer.class, row * column);
+
+        for(int i = 0; i < row * column - 1; ++i) board[i] = new Piece(Cell.VALUE, i);
+        board[row * column - 1] = new Piece(Cell.BLANK);
+    }
 
     @Override
     public int getRow() { return row; }
@@ -32,22 +46,51 @@ public final class NPuzzle extends SlidePuzzle<int> {
     @Override
     public void reset() {
         int number = 1;
+        Index2D pos = new Index2D();
 
-        for(int i = 0; i < getRow(); ++i) {
-            for(int j = 0; j < getColumn() - 1; ++j) {
-                getPiece(new Index2D(i, j)).setPiece(Cell.VALUE, number++);
+        for(; pos.getY() < getRow(); pos.incY()) {
+            for(pos.setX(0); pos.getX() < getColumn() - 1; pos.incX()) {
+                getPiece(pos).setPiece(Cell.VALUE, number++);
             }
             number += 2;
         }
 
         number = getColumn();
 
-        for(int i = 0; i < getRow() - 1; ++i) {
-            getPiece(new Index2D(i, getColumn() - 1)).setPiece(Cell.VALUE, number);
+        for(pos.setTo(0, getColumn() - 1); pos.getY() < getRow() - 1; pos.incY()) {
+            getPiece(pos).setPiece(Cell.VALUE, number);
             number += getColumn();
         }
 
-        getPiece(new Index2D(getRow() - 1, getColumn() - 1)).setId(Cell.BLANK);
+        pos.setTo(getRow() - 1, getColumn() - 1);
+        getPiece(pos).setId(Cell.BLANK);
+    }
+
+    @Override
+    public boolean isSolved() {
+
+        Index2D pos = new Index2D(getRow() - 1, getColumn() - 1);
+
+        if(getPiece(pos).getId() != Cell.BLANK)
+            return false;
+
+        int number = 1;
+
+        for (pos.setY(0); pos.getY() < getRow(); pos.incY()) {
+            for (pos.setX(0); pos.getX() < getColumn() - 1; pos.incX()) {
+                if (getPiece(pos).getValue() != number++) return false;
+            }
+            number += 2;
+        }
+
+        number = getColumn();
+
+        for (pos.setTo(0, getColumn() - 1); pos.getY() < getRow() - 1; pos.incY()) {
+            if (getPiece(pos).getValue() != number) return false;
+            number += getColumn();
+        }
+
+        return true;
     }
 
     private int getIndex(final Index2D index2D) {
