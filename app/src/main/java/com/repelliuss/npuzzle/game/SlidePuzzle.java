@@ -8,7 +8,6 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
     private Move lastMove;
     private int moveCount;
-    private final Index2D posBlank;
 
     enum Cell {
         VALUE,
@@ -54,11 +53,10 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         }
     }
 
-    protected SlidePuzzle(Index2D argPosBlank) {
+    protected SlidePuzzle() {
 
         lastMove = Move.STAY;
         moveCount = 0;
-        posBlank = argPosBlank;
     }
 
     @Override
@@ -79,10 +77,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         ++moveCount;
     }
 
-    private Index2D getPosBlank() {
-        return posBlank;
-    }
-
+    protected abstract Index2D getPosBlank();
     protected abstract void setRow(int argColumn);
     protected abstract void setColumn(int argColumn);
     protected abstract void setPiece(Index2D pos, final Piece piece);

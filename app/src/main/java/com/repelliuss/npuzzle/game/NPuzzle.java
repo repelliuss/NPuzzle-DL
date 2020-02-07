@@ -8,9 +8,9 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
 
     private final Piece[] board;
     private int row, column;
+    private final Index2D posBlank;
 
     public NPuzzle(int argRow, int argColumn) {
-        super(new Index2D(argRow - 1, argColumn - 1));
         row = argRow;
         column = argColumn;
 
@@ -19,6 +19,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
 
         for(int i = 0; i < row * column - 1; ++i) board[i] = new Piece(Cell.VALUE, i + 1);
         board[row * column - 1] = new Piece(Cell.BLANK);
+        posBlank = new Index2D(row - 1, column - 1);
     }
 
     @Override
@@ -31,6 +32,9 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
     public Piece getPiece(Index2D pos) {
         return board[getIndex(pos)];
     }
+
+    @Override
+    protected Index2D getPosBlank() { return posBlank; }
 
     @Override
     protected void setRow(int argRow) { row = argRow; }
