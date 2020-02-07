@@ -140,7 +140,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
     }
 
     private void swapCell(Index2D left, Index2D right) {
-        Piece temp = getPiece(left);
+        Piece temp = new Piece(getPiece(left));
         setPiece(left, getPiece(right));
         setPiece(right, temp);
     }
