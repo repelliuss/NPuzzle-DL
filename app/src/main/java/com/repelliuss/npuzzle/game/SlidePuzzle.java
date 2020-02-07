@@ -24,9 +24,14 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
             setId(argID);
         }
 
-       public Piece(Cell argId, final T argValue) {
-         setPiece(argId, argValue);
-       }
+        public Piece(Cell argId, final T argValue) {
+             setPiece(argId, argValue);
+        }
+
+        public Piece(final Piece other) {
+            id = other.getId();
+            value = other.getValue();
+        }
 
         @Override
         public Cell getId() { return id; }
