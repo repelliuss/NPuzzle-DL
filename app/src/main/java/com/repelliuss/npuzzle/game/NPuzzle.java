@@ -15,9 +15,9 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
         column = argColumn;
 
         //noinspection unchecked
-        board = (Piece[]) Array.newInstance(Integer.class, row * column);
+        board = (Piece[]) Array.newInstance(Piece.class, row * column);
 
-        for(int i = 0; i < row * column - 1; ++i) board[i] = new Piece(Cell.VALUE, i);
+        for(int i = 0; i < row * column - 1; ++i) board[i] = new Piece(Cell.VALUE, i + 1);
         board[row * column - 1] = new Piece(Cell.BLANK);
     }
 
