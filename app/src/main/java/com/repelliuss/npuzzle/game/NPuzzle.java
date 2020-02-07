@@ -56,7 +56,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
             for(pos.setX(0); pos.getX() < getColumn() - 1; pos.incX()) {
                 getPiece(pos).setPiece(Cell.VALUE, number++);
             }
-            number += 2;
+            ++number;
         }
 
         number = getColumn();
@@ -68,6 +68,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
 
         pos.setTo(getRow() - 1, getColumn() - 1);
         getPiece(pos).setId(Cell.BLANK);
+        getPosBlank().setTo(pos);
     }
 
     @Override
@@ -84,7 +85,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
             for (pos.setX(0); pos.getX() < getColumn() - 1; pos.incX()) {
                 if (getPiece(pos).getValue() != number++) return false;
             }
-            number += 2;
+            ++number;
         }
 
         number = getColumn();
