@@ -93,15 +93,19 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
             switch(move) {
                 case LEFT:
                     swapCell(getPosBlank(), Index2D.getRelativeToX(getPosBlank(), -1));
+                    getPosBlank().decX();
                     break;
                 case RIGHT:
                     swapCell(getPosBlank(), Index2D.getRelativeToX(getPosBlank(), 1));
+                    getPosBlank().incX();
                     break;
                 case UP:
                     swapCell(getPosBlank(), Index2D.getRelativeToY(getPosBlank(), -1));
+                    getPosBlank().decY();
                     break;
                 case DOWN:
                     swapCell(getPosBlank(), Index2D.getRelativeToY(getPosBlank(), 1));
+                    getPosBlank().incY();
                     break;
             }
 
