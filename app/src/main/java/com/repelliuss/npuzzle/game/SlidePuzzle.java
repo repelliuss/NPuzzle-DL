@@ -3,7 +3,6 @@ package com.repelliuss.npuzzle.game;
 import androidx.annotation.NonNull;
 
 import com.repelliuss.npuzzle.utilities.Index2D;
-import com.repelliuss.npuzzle.utilities.Move;
 
 public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
