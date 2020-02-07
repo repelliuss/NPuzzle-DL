@@ -14,6 +14,11 @@ public class Index2D {
         x = argX;
     }
 
+    public Index2D(final Index2D other) {
+        y = other.getY();
+        x = other.getX();
+    }
+
     public int getY() {
         return y;
     }
@@ -27,6 +32,11 @@ public class Index2D {
     public void setTo(int argY, int argX) {
         setY(argY);
         setX(argX);
+    }
+
+    public void setTo(final Index2D other) {
+        setY(other.getY());
+        setX(other.getX());
     }
 
     public void incX() {
