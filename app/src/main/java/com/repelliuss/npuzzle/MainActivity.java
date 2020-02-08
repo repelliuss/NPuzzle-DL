@@ -54,8 +54,8 @@ public final class MainActivity extends AppCompatActivity {
         int columnNumber = Integer.parseInt(viewColumn.getText().toString().trim());
         if(columnNumber < 3 || columnNumber > 9) return false;
 
-        boardSize.putInt("ROW_NUMBER", rowNumber);
-        boardSize.putInt("COLUMN_NUMBER", columnNumber);
+        boardSize.putInt(getString(R.string.key_row_count), rowNumber);
+        boardSize.putInt(getString(R.string.key_column_count), columnNumber);
 
         return true;
     }
