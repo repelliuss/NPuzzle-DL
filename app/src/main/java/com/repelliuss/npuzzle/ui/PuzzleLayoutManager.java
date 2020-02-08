@@ -1,4 +1,4 @@
-package com.repelliuss.npuzzle.managers;
+package com.repelliuss.npuzzle.ui;
 
 import android.content.Context;
 

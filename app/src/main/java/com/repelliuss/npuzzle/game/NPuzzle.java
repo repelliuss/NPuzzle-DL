@@ -1,6 +1,6 @@
 package com.repelliuss.npuzzle.game;
 
-import com.repelliuss.npuzzle.utilities.Index2D;
+import com.repelliuss.npuzzle.utils.Index2D;
 
 import java.lang.reflect.Array;
 

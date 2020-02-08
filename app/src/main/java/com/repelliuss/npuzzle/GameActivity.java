@@ -7,33 +7,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.repelliuss.npuzzle.adapters.SlidePuzzleAdapter;
+import com.repelliuss.npuzzle.ui.SlidePuzzleAdapter;
 import com.repelliuss.npuzzle.game.Move;
 import com.repelliuss.npuzzle.game.NPuzzle;
-import com.repelliuss.npuzzle.managers.PuzzleLayoutManager;
+import com.repelliuss.npuzzle.ui.PuzzleLayoutManager;
 
 public class GameActivity extends AppCompatActivity {
 
     private SlidePuzzleAdapter<Integer> adapter;
     private RecyclerView recyclerView;
+    private NPuzzle puzzle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        NPuzzle puzzle = new NPuzzle(9, 3);
-        puzzle.move(Move.UP);
-        puzzle.move(Move.LEFT);
-        puzzle.reset();
-
+        puzzle = new NPuzzle(9, 3);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         if(extras != null) {
             int row = extras.getInt("ROW_NUMBER");
             int column = extras.getInt("COLUMN_NUMBER");
-
 
             TextView textView = findViewById(R.id.txt_game_size);
             StringBuilder gameSize = new StringBuilder(3);

@@ -1,4 +1,4 @@
-package com.repelliuss.npuzzle.adapters;
+package com.repelliuss.npuzzle.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.repelliuss.npuzzle.R;
 import com.repelliuss.npuzzle.game.SlidePuzzle;
-import com.repelliuss.npuzzle.utilities.Index2D;
+import com.repelliuss.npuzzle.utils.Index2D;
 
 public final class SlidePuzzleAdapter<T>
         extends RecyclerView.Adapter<SlidePuzzleAdapter<T>.ViewHolder> {

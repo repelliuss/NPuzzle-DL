@@ -1,6 +1,6 @@
 package com.repelliuss.npuzzle.game;
 
-import com.repelliuss.npuzzle.utilities.Index2D;
+import com.repelliuss.npuzzle.utils.Index2D;
 
 public interface GameBoard<E extends BoardPiece> {
     int getRow();

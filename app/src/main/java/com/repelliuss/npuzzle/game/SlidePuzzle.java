@@ -2,7 +2,7 @@ package com.repelliuss.npuzzle.game;
 
 import androidx.annotation.NonNull;
 
-import com.repelliuss.npuzzle.utilities.Index2D;
+import com.repelliuss.npuzzle.utils.Index2D;
 
 public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 

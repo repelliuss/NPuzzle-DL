@@ -1,4 +1,4 @@
-package com.repelliuss.npuzzle.utilities;
+package com.repelliuss.npuzzle.utils;
 
 public class Index2D {
     private int y;
