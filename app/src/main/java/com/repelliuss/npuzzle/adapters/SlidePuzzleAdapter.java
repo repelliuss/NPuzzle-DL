@@ -10,11 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.repelliuss.npuzzle.R;
+import com.repelliuss.npuzzle.game.SlidePuzzle;
+import com.repelliuss.npuzzle.utilities.Index2D;
 
-public final class RecyclerViewAdapter
-        extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public final class SlidePuzzleAdapter<T>
+        extends RecyclerView.Adapter<SlidePuzzleAdapter<T>.ViewHolder> {
 
-    private String[] data;
+    private final SlidePuzzle<T> puzzle;
     private LayoutInflater inflater;
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -31,9 +33,9 @@ public final class RecyclerViewAdapter
         }
     }
 
-    public RecyclerViewAdapter(Context context, String[] arg_data) {
+    public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle) {
         inflater = LayoutInflater.from(context);
-        data = arg_data;
+        puzzle = argPuzzle;
     }
 
     @Override
@@ -45,13 +47,18 @@ public final class RecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getTextView().setText(data[position]);
+
+        Index2D index = new Index2D(position / puzzle.getColumn(),
+                                    position % puzzle.getColumn());
+        SlidePuzzle<T>.Piece piece = puzzle.getPiece(index);
+
+        if(piece.getId() == SlidePuzzle.Cell.VALUE)
+            holder.getTextView().setText(String.valueOf(piece.getValue()));
+        else holder.getTextView().setBackgroundColor(0xFF12FF45);
     }
 
     @Override
     public int getItemCount() {
-        return data.length;
+        return puzzle.getRow() * puzzle.getColumn();
     }
-
-
 }
