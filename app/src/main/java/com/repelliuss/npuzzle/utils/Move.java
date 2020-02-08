@@ -1,4 +1,4 @@
-package com.repelliuss.npuzzle.game;
+package com.repelliuss.npuzzle.utils;
 
 public enum Move {
 
