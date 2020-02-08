@@ -9,7 +9,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
     private Move lastMove;
     private int moveCount;
 
-    enum Cell {
+    public enum Cell {
         VALUE,
         BLANK
     }
