@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.repelliuss.npuzzle.R;
 import com.repelliuss.npuzzle.game.SlidePuzzle;
 import com.repelliuss.npuzzle.utils.Index2D;
+import com.repelliuss.npuzzle.utils.Move;
 
 public final class SlidePuzzleAdapter<T>
         extends RecyclerView.Adapter<SlidePuzzleAdapter<T>.ViewHolder> {
@@ -71,5 +72,35 @@ public final class SlidePuzzleAdapter<T>
     @Override
     public int getItemCount() {
         return puzzle.getRow() * puzzle.getColumn();
+    }
+
+    public void notifyBlankMoved(@NonNull Move blankMove) {
+
+        int newPos = puzzle.getPosBlank().toLinear(puzzle.getColumn());
+        int oldPos = newPos;
+
+        switch(blankMove) {
+            case UP:
+                oldPos += puzzle.getColumn();
+                break;
+
+            case DOWN:
+                oldPos -= puzzle.getColumn();
+                break;
+
+            case LEFT:
+                oldPos += 1;
+                break;
+
+            case RIGHT:
+                oldPos -= 1;
+                break;
+        }
+
+        notifyItemMoved(oldPos, newPos);
+        if(blankMove == Move.UP)
+            notifyItemMoved(newPos + 1, oldPos);
+        else if(blankMove == Move.DOWN)
+            notifyItemMoved(newPos - 1, oldPos);
     }
 }
