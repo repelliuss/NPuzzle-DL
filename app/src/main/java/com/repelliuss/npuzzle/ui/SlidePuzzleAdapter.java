@@ -1,12 +1,14 @@
 package com.repelliuss.npuzzle.ui;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.repelliuss.npuzzle.R;
@@ -18,6 +20,7 @@ public final class SlidePuzzleAdapter<T>
 
     private final SlidePuzzle<T> puzzle;
     private LayoutInflater inflater;
+    private Resources resources;
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,6 +38,7 @@ public final class SlidePuzzleAdapter<T>
 
     public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle) {
         inflater = LayoutInflater.from(context);
+        resources = context.getResources();
         puzzle = argPuzzle;
     }
 
@@ -52,9 +56,16 @@ public final class SlidePuzzleAdapter<T>
                                     position % puzzle.getColumn());
         SlidePuzzle<T>.Piece piece = puzzle.getPiece(index);
 
-        if(piece.getId() == SlidePuzzle.Cell.VALUE)
+        if(piece.getId() == SlidePuzzle.Cell.VALUE) {
             holder.getTextView().setText(String.valueOf(piece.getValue()));
-        else holder.getTextView().setBackgroundColor(0xFF12FF45);
+            holder.getTextView().setBackgroundColor(
+                    ResourcesCompat.getColor(resources, R.color.colorPrimaryDark, null));
+        }
+        else {
+            holder.getTextView().setText("");
+            holder.getTextView().setBackgroundColor(
+                    ResourcesCompat.getColor(resources, R.color.colorYellow, null));
+        }
     }
 
     @Override
