@@ -30,7 +30,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
 
     @Override
     public Piece getPiece(Index2D pos) {
-        return board[getIndex(pos)];
+        return board[pos.toLinear(getColumn())];
     }
 
     @Override
@@ -44,7 +44,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
 
     @Override
     protected void setPiece(Index2D pos, final Piece piece) {
-        board[getIndex(pos)].setPiece(piece);
+        board[pos.toLinear(getColumn())].setPiece(piece);
     }
 
     @Override
@@ -96,9 +96,5 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
         }
 
         return true;
-    }
-
-    private int getIndex(final Index2D index2D) {
-        return getColumn() * index2D.getY() + index2D.getX();
     }
 }
