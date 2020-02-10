@@ -78,7 +78,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         ++moveCount;
     }
 
-    protected abstract Index2D getPosBlank();
+    public abstract Index2D getPosBlank();
     protected abstract void setRow(int argColumn);
     protected abstract void setColumn(int argColumn);
     protected abstract void setPiece(Index2D pos, final Piece piece);

@@ -34,7 +34,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
     }
 
     @Override
-    protected Index2D getPosBlank() { return posBlank; }
+    public Index2D getPosBlank() { return posBlank; }
 
     @Override
     protected void setRow(int argRow) { row = argRow; }
