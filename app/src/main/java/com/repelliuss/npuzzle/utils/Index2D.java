@@ -55,6 +55,10 @@ public class Index2D {
         --y;
     }
 
+    public int toLinear(int width) {
+        return width * getY() + getX();
+    }
+
     public static Index2D getRelativeToY(final Index2D index, int deltaY) {
         return getRelativeTo(index, deltaY, 0);
     }
