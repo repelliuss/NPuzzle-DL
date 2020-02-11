@@ -5,11 +5,15 @@ import androidx.annotation.NonNull;
 import com.repelliuss.npuzzle.utils.Index2D;
 import com.repelliuss.npuzzle.utils.Move;
 
+import java.util.Random;
+
 public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
     private Move lastMove;
     private int moveCount;
     private GameStatus status;
+    private final int MIN_RANDOM_MOVE = 200;
+    private final int EXTRA_RANDOM_MOVE = 200;
 
     public enum Cell {
         VALUE,
@@ -149,6 +153,31 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
                 getPosBlank().getY() + yMove >= 0 &&
                 getPosBlank().getX() + xMove < getColumn() &&
                 getPosBlank().getX() + xMove >= 0;
+    }
+
+    public void randomize() {
+
+        Move userLastMove = getLastMove();
+        Move[] moveList = new Move[]{ Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT};
+        Random random = new Random();
+        int moveCount = MIN_RANDOM_MOVE + random.nextInt(EXTRA_RANDOM_MOVE);
+        int range = moveList.length;
+        int moveIndex = random.nextInt(range--);
+
+        for(int i = 0; i < moveCount; ++i) {
+
+            while(!move(moveList[moveIndex])) {
+                Move.swap(moveList, moveIndex, range--);
+                moveIndex = random.nextInt(range);
+            }
+            Move.swap(moveList, moveIndex, moveList.length - 1);
+            range = moveList.length - 1;
+            moveIndex = random.nextInt(range);
+        }
+
+        if(isSolved()) move(Move.LEFT);
+
+        setLastMove(userLastMove);
     }
 
     private void swapCell(Index2D left, Index2D right) {
