@@ -36,14 +36,16 @@ public class GameActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        NPuzzle nPuzzle;
 
         if(extras != null) {
-            puzzle = new NPuzzle(extras.getInt(getString(R.string.key_row_count)),
+            nPuzzle = new NPuzzle(extras.getInt(getString(R.string.key_row_count)),
                     extras.getInt(getString(R.string.key_column_count)));
         }
-        else puzzle = new NPuzzle(3, 3);
+        else nPuzzle = new NPuzzle(3, 3);
 
-        adapter = new SlidePuzzleAdapter<>(this, (NPuzzle) puzzle);
+        puzzle = nPuzzle;
+        adapter = new SlidePuzzleAdapter<>(this, nPuzzle, this);
 
         activateSwipe();
 
