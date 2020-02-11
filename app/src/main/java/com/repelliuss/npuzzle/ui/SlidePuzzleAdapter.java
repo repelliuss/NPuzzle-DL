@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.repelliuss.npuzzle.GameEventHandler;
 import com.repelliuss.npuzzle.R;
 import com.repelliuss.npuzzle.game.SlidePuzzle;
 import com.repelliuss.npuzzle.utils.Index2D;
@@ -22,6 +23,7 @@ public final class SlidePuzzleAdapter<T>
     private final SlidePuzzle<T> puzzle;
     private LayoutInflater inflater;
     private Resources resources;
+    private GameEventHandler handler;
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -37,10 +39,12 @@ public final class SlidePuzzleAdapter<T>
         }
     }
 
-    public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle) {
+    public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle,
+                              final GameEventHandler argHandler) {
         inflater = LayoutInflater.from(context);
         resources = context.getResources();
         puzzle = argPuzzle;
+        handler = argHandler;
     }
 
     @Override
