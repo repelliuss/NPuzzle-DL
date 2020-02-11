@@ -103,6 +103,11 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
     }
 
     @Override
+    public void initialize() {
+        randomize();
+    }
+
+    @Override
     public boolean move(@NonNull final Move move) {
         if(checkMove(move)) {
             switch(move) {
