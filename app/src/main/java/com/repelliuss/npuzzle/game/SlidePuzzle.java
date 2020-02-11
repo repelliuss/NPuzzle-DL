@@ -84,6 +84,10 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
         ++moveCount;
     }
 
+    private void resetMoveCount() {
+        moveCount = 0;
+    }
+
     public abstract Index2D getPosBlank();
     protected abstract void setRow(int argColumn);
     protected abstract void setColumn(int argColumn);
@@ -157,7 +161,6 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
     public void randomize() {
 
-        Move userLastMove = getLastMove();
         Move[] moveList = new Move[]{ Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT};
         Random random = new Random();
         int moveCount = MIN_RANDOM_MOVE + random.nextInt(EXTRA_RANDOM_MOVE);
@@ -177,7 +180,9 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
         if(isSolved()) move(Move.LEFT);
 
-        setLastMove(userLastMove);
+        setLastMove(Move.STAY);
+        resetMoveCount();
+        setStatus(GameStatus.ONGOING);
     }
 
     private void swapCell(Index2D left, Index2D right) {
