@@ -9,6 +9,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
     private Move lastMove;
     private int moveCount;
+    private GameStatus status;
 
     public enum Cell {
         VALUE,
@@ -58,6 +59,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
         lastMove = Move.STAY;
         moveCount = 0;
+        status = GameStatus.ONGOING;
     }
 
     @Override
@@ -82,6 +84,15 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
     protected abstract void setRow(int argColumn);
     protected abstract void setColumn(int argColumn);
     protected abstract void setPiece(Index2D pos, final Piece piece);
+
+    @Override
+    public GameStatus getStatus() {
+        return status;
+    }
+
+    private void setStatus(GameStatus updatedStatus) {
+        status = updatedStatus;
+    }
 
     @Override
     public boolean move(@NonNull final Move move) {
