@@ -108,6 +108,6 @@ public final class SlidePuzzleAdapter<T>
         else if(blankMove == Move.DOWN)
             notifyItemMoved(newPos - 1, oldPos);
 
-        if(puzzle.getStatus() == GameStatus.FINISHED) handler.onFinished();
+        if(puzzle.getStatus() == GameStatus.FINISHED) handler.onGameFinish();
     }
 }

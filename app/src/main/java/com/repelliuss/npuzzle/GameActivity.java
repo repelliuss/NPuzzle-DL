@@ -59,7 +59,7 @@ public class GameActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFinished() {
+    public void onGameFinish() {
         Log.d("PUZZLE STATUS", "SOLVED");
     }
 
