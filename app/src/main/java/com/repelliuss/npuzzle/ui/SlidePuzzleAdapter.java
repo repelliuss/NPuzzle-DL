@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.repelliuss.npuzzle.GameEventHandler;
 import com.repelliuss.npuzzle.R;
+import com.repelliuss.npuzzle.game.GameStatus;
 import com.repelliuss.npuzzle.game.SlidePuzzle;
 import com.repelliuss.npuzzle.utils.Index2D;
 import com.repelliuss.npuzzle.utils.Move;
@@ -106,5 +107,7 @@ public final class SlidePuzzleAdapter<T>
             notifyItemMoved(newPos + 1, oldPos);
         else if(blankMove == Move.DOWN)
             notifyItemMoved(newPos - 1, oldPos);
+
+        if(puzzle.getStatus() == GameStatus.FINISHED) handler.onFinished();
     }
 }
