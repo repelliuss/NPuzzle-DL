@@ -46,22 +46,27 @@ public class GameActivity extends AppCompatActivity
 
         puzzle = nPuzzle;
         adapter = new SlidePuzzleAdapter<>(this, nPuzzle, this);
-
-        activateSwipe();
-
         recyclerView = findViewById(R.id.rv_game_area);
+
         configurePuzzleView();
+        activateSwipe();
+        onGameStart();
+    }
+
+    @Override
+    public void onGameStart() {
+        puzzle.initialize();
+    }
+
+    @Override
+    public void onFinished() {
+        Log.d("PUZZLE STATUS", "SOLVED");
     }
 
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         view.performClick();
         return detector.onTouchEvent(motionEvent);
-    }
-
-    @Override
-    public void onFinished() {
-        Log.d("PUZZLE STATUS", "SOLVED");
     }
 
     private void configurePuzzleView() {
