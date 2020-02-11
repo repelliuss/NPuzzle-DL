@@ -76,6 +76,9 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
 
         Index2D pos = new Index2D(getRow() - 1, getColumn() - 1);
 
+        if(getStatus() == GameStatus.FINISHED)
+            return true;
+
         if(getPiece(pos).getId() != Cell.BLANK)
             return false;
 
