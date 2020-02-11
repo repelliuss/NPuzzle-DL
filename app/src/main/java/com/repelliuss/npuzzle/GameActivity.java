@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -20,7 +21,7 @@ import com.repelliuss.npuzzle.ui.SlidePuzzleSwipeListener;
 import com.repelliuss.npuzzle.utils.Screen;
 
 public class GameActivity extends AppCompatActivity
-    implements View.OnTouchListener {
+    implements GameEventHandler, View.OnTouchListener{
 
     private SlidePuzzleAdapter<Integer> adapter;
     private RecyclerView recyclerView;
@@ -54,6 +55,11 @@ public class GameActivity extends AppCompatActivity
     public boolean onTouch(View view, MotionEvent motionEvent) {
         view.performClick();
         return detector.onTouchEvent(motionEvent);
+    }
+
+    @Override
+    public void onFinished() {
+        Log.d("PUZZLE STATUS", "SOLVED");
     }
 
     private void configurePuzzleView() {
