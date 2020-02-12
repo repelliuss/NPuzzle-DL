@@ -75,7 +75,7 @@ public class GameActivity extends AppCompatActivity
         recyclerView.setLayoutManager(new PuzzleLayoutManager(this, puzzle.getColumn()));
 
         recyclerView.addItemDecoration(new PuzzlePieceDecoration(puzzle.getColumn(),
-                Screen.dpToPixel(-4, getResources())));
+                Screen.dpToPixel(0, getResources())));
 
         recyclerView.setAdapter(adapter);
     }
