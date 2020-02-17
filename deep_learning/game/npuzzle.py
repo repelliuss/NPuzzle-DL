@@ -4,6 +4,7 @@ from game.slidepuzzle import SlidePuzzle
 from game.piece import Piece
 from game.cell import Cell
 from game.move import Move
+import numpy as np
 
 class NPuzzle(SlidePuzzle):
 
@@ -80,3 +81,10 @@ class NPuzzle(SlidePuzzle):
             number += self.column
 
         return True
+
+    def numpy(self):
+        matrix = np.zeros((self.row, self.column), dtype=np.float16)
+        for i in range(self.row):
+            for j in range(self.column):
+                matrix[i][j] = self.get_cell((i,j)).value
+        return matrix
