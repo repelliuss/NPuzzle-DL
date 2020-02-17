@@ -1,3 +1,7 @@
+#PYTHON
+__pycache__/
+*.pyc
+
 # Built application files
 *.apk
 *.aar
