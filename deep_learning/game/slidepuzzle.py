@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
 from abc import ABC, abstractmethod
-from .move import Move
-from .piece import Piece
+from game.move import Move
+from game.piece import Piece
 
 class SlidePuzzle(ABC):
 

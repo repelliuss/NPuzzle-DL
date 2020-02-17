@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-from .slidepuzzle import SlidePuzzle
-from .piece import Piece
-from .cell import Cell
-from .move import Move
+from game.slidepuzzle import SlidePuzzle
+from game.piece import Piece
+from game.cell import Cell
+from game.move import Move
 
 class NPuzzle(SlidePuzzle):
 
