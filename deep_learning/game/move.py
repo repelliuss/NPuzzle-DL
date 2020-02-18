@@ -20,3 +20,15 @@ class Move(Enum):
             return 4
         else:
             return 0
+
+    def opposite(move):
+        if move == Move.LEFT:
+            return Move.RIGHT
+        elif move == Move.RIGHT:
+            return Move.LEFT
+        elif move == Move.UP:
+            return Move.DOWN
+        elif move == Move.DOWN:
+            return Move.UP
+        else:
+            return None
