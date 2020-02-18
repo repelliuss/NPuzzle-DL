@@ -134,5 +134,18 @@ def generate_data(snum, rows, columns, cmplx, shuffle=True):
 
     return np.array(data)
 
-def save_data(data, path):
-    pass
+    
+def save_data(x_data, y_data):
+    path = os.path.join(FILE_PATH, FILE_NAME)
+    np.savez_compressed(path,
+                        x_train=x_data[0,:,0],
+                        x_test=x_data[0,:,1],
+                        y_train=y_data[0,:,0],
+                        y_test=y_data[0,:,1])
+    print(f'Saved to {path}')
+    print(f'Train length={len(x_data[0,:,0])}')
+    print(f'Test length={len(y_data[0,:,0])}')
+
+train_data = generate_data(args.scenarios, args.row, args.col, args.cmplx)
+test_data = generate_data(args.scenarios // 6, args.row, args.col, args.cmplx)
+save_data(train_data, test_data)
