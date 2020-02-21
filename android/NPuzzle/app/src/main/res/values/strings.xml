@@ -3,4 +3,5 @@
     <string name="txt_num_row">Number of Rows</string>
     <string name="txt_num_column">Number of Columns</string>
     <string name="txt_start">Start</string>
+    <string name="txt_hint">HINT</string>
 </resources>

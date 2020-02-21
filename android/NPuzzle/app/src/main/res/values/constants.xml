@@ -3,6 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="MissingTranslation">
 
-    <string name="key_row_count">KEY_ROW_COUNT</string>
-    <string name="key_column_count">KEY_COLUMN_COUNT</string>
+    <string name="key_row_count" translatable="false">KEY_ROW_COUNT</string>
+    <string name="key_column_count" translatable="false">KEY_COLUMN_COUNT</string>
 </resources>
