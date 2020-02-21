@@ -20,6 +20,7 @@ import com.repelliuss.npuzzle.ui.SlidePuzzleAdapter;
 import com.repelliuss.npuzzle.game.NPuzzle;
 import com.repelliuss.npuzzle.ui.PuzzleLayoutManager;
 import com.repelliuss.npuzzle.ui.SlidePuzzleSwipeListener;
+import com.repelliuss.npuzzle.utils.Move;
 import com.repelliuss.npuzzle.utils.Screen;
 
 import java.io.FileInputStream;
@@ -77,6 +78,40 @@ public class GameActivity extends AppCompatActivity
     public boolean onTouch(View view, MotionEvent motionEvent) {
         view.performClick();
         return detector.onTouchEvent(motionEvent);
+    }
+
+    public void onHintClick(View view) {
+
+        float[][] predictions = doInference(puzzle.getInputBoard());
+        int direction = 0;
+        Move move;
+        boolean[] validMoves = {true, true, true, true};
+
+        do {
+            float max = 0.0f;
+            for (int i = 0; i < 4; ++i) {
+                if (predictions[0][i] > max) {
+                    if(validMoves[i]) {
+                        max = predictions[0][i];
+                        direction = i;
+                    }
+                }
+            }
+
+            validMoves[direction] = false;
+            move = Move.toMove(direction);
+        }while(move == Move.toOpposite(puzzle.getLastMove()) || !puzzle.checkMove(move));
+
+        puzzle.move(move);
+        adapter.notifyBlankMoved(move);
+    }
+
+    public float[][] doInference(float[][] inputBoard) {
+
+        float[][] outputVal = new float[1][4];
+        tflite.run(inputBoard, outputVal);
+
+        return outputVal;
     }
 
     private void configurePuzzleView() {
