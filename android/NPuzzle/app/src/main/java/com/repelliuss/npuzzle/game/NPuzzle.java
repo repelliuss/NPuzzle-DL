@@ -100,4 +100,23 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
 
         return true;
     }
+
+    @Override
+    public float[][] getInputBoard() {
+
+        float[][] inputBoard = new float[getRow()][getColumn()];
+
+        Index2D pos = new Index2D();
+        for (pos.setY(0); pos.getY() < getRow(); pos.incY()) {
+            for (pos.setX(0); pos.getX() < getColumn(); pos.incX()) {
+                Piece piece = getPiece(pos);
+
+                if(piece.getId() == Cell.VALUE)
+                    inputBoard[pos.getY()][pos.getX()] = getPiece(pos).getValue() / 9.0f;
+                else inputBoard[pos.getY()][pos.getX()] = 0.0f;
+            }
+        }
+
+        return inputBoard;
+    }
 }

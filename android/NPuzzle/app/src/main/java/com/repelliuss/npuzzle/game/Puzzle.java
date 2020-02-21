@@ -13,5 +13,5 @@ public interface Puzzle<E extends BoardPiece> extends GameBoard<E> {
     boolean checkMove(int yMove, int xMove);
     void reset();
     boolean isSolved();
-
+    float[][] getInputBoard();
 }
