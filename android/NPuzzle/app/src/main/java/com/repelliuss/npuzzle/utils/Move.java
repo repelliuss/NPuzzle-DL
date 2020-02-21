@@ -33,4 +33,37 @@ public enum Move {
         arr[left] = arr[right];
         arr[right] = temp;
     }
+
+
+    public static Move toMove(int direction) {
+
+        switch(direction) {
+            case 0:
+                return LEFT;
+            case 1:
+                return RIGHT;
+            case 2:
+                return UP;
+            case 3:
+                return DOWN;
+        }
+
+        return STAY;
+    }
+
+    public static Move toOpposite(Move move) {
+
+        switch(move) {
+            case LEFT:
+                return RIGHT;
+            case RIGHT:
+                return LEFT;
+            case UP:
+                return DOWN;
+            case DOWN:
+                return UP;
+        }
+
+        return STAY;
+    }
 }
