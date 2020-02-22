@@ -83,7 +83,7 @@ class NPuzzle(SlidePuzzle):
         return True
 
     def numpy(self):
-        matrix = np.zeros((self.row, self.column), dtype=np.float16)
+        matrix = np.zeros((self.row, self.column))
         for i in range(self.row):
             for j in range(self.column):
                 matrix[i][j] = self.get_cell((i,j)).value
