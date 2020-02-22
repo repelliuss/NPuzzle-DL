@@ -23,7 +23,7 @@ class SlidePuzzle(ABC):
         return self.__move_count
 
     def __inc_move_count(self):
-        ++self.__move_count
+        self.__move_count += 1
 
     def __reset_move_count(self):
         self.__move_count = 0
