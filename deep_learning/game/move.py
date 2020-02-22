@@ -11,13 +11,13 @@ class Move(Enum):
 
     def to_int(move):
         if move == Move.LEFT:
-            return 1
+            return 0
         elif move == Move.RIGHT:
-            return 2
+            return 1
         elif move == Move.UP:
-            return 3
+            return 2
         elif move == Move.DOWN:
-            return 4
+            return 3
         else:
             return 0
 
