@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -24,14 +22,10 @@ import com.repelliuss.npuzzle.ui.SlidePuzzleAdapter;
 import com.repelliuss.npuzzle.game.NPuzzle;
 import com.repelliuss.npuzzle.ui.PuzzleLayoutManager;
 import com.repelliuss.npuzzle.ui.SlidePuzzleSwipeListener;
+import com.repelliuss.npuzzle.utils.AI;
 import com.repelliuss.npuzzle.utils.Move;
+import com.repelliuss.npuzzle.utils.PuzzleAI;
 import com.repelliuss.npuzzle.utils.Screen;
-
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.MappedByteBuffer;
-import java.nio.channels.FileChannel;
-import org.tensorflow.lite.Interpreter;
 
 public class GameActivity extends AppCompatActivity
     implements GameEventHandler, View.OnTouchListener{
@@ -40,7 +34,7 @@ public class GameActivity extends AppCompatActivity
     private RecyclerView recyclerView;
     private Puzzle<SlidePuzzle<Integer>.Piece> puzzle;
     private GestureDetectorCompat detector;
-    private Interpreter tflite;
+    private AI<Move> ai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +56,12 @@ public class GameActivity extends AppCompatActivity
         puzzle = nPuzzle;
         adapter = new SlidePuzzleAdapter<>(this, nPuzzle, this, moveNum);
         recyclerView = findViewById(R.id.rv_game_area);
-        moveNum.setText(String.valueOf(puzzle.getMoveCount()));
+        ai = new PuzzleAI(GameActivity.this, puzzle);
 
+        moveNum.setText(String.valueOf(puzzle.getMoveCount()));
         configurePuzzleView();
         activateSwipe();
         onGameStart();
-        loadModel();
     }
 
     @Override
@@ -116,36 +110,9 @@ public class GameActivity extends AppCompatActivity
 
     public void onHintClick(View view) {
 
-        float[][] predictions = doInference(puzzle.getInputBoard());
-        int direction = 0;
-        Move move;
-        boolean[] validMoves = {true, true, true, true};
-
-        do {
-            float max = 0.0f;
-            for (int i = 0; i < 4; ++i) {
-                if (predictions[0][i] > max) {
-                    if(validMoves[i]) {
-                        max = predictions[0][i];
-                        direction = i;
-                    }
-                }
-            }
-
-            validMoves[direction] = false;
-            move = Move.toMove(direction);
-        }while(move == Move.toOpposite(puzzle.getLastMove()) || !puzzle.checkMove(move));
-
+        Move move = ai.predict();
         puzzle.move(move);
         adapter.notifyBlankMoved(move);
-    }
-
-    public float[][] doInference(float[][] inputBoard) {
-
-        float[][] outputVal = new float[1][4];
-        tflite.run(inputBoard, outputVal);
-
-        return outputVal;
     }
 
     private void configurePuzzleView() {
@@ -166,33 +133,5 @@ public class GameActivity extends AppCompatActivity
                 new SlidePuzzleSwipeListener<>((SlidePuzzle<Integer>) puzzle, adapter);
         detector = new GestureDetectorCompat(this, swipeListener);
         swipeable.setOnTouchListener(this);
-    }
-
-    private void loadModel() {
-
-        StringBuilder modelFile = new StringBuilder(10);
-        modelFile.append(puzzle.getRow());
-        modelFile.append('x');
-        modelFile.append(puzzle.getColumn());
-        modelFile.append(".tflite");
-
-        try {
-            tflite= new Interpreter(loadModelFile(GameActivity.this,
-                    modelFile.toString()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private MappedByteBuffer loadModelFile(Activity activity, String MODEL_FILE)
-            throws IOException {
-
-        AssetFileDescriptor fileDescriptor = activity.getAssets().openFd(MODEL_FILE);
-        FileInputStream inputStream = new FileInputStream(fileDescriptor.getFileDescriptor());
-        FileChannel fileChannel = inputStream.getChannel();
-        long startOffset = fileDescriptor.getStartOffset();
-        long declaredLength = fileDescriptor.getDeclaredLength();
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength);
     }
 }
