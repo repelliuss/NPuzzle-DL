@@ -5,8 +5,8 @@ import com.repelliuss.npuzzle.utils.Move;
 
 public class SlidePuzzleSwipeListener<T> extends OnSwipeListener {
 
-    private SlidePuzzle<T> puzzle;
-    private SlidePuzzleAdapter<T> adapter;
+    private final SlidePuzzle<T> puzzle;
+    private final SlidePuzzleAdapter<T> adapter;
 
     public SlidePuzzleSwipeListener(final SlidePuzzle<T> argPuzzle,
                                     final SlidePuzzleAdapter<T> argAdapter) {

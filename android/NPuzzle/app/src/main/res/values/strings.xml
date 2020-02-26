@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">NPuzzle</string>
-    <string name="txt_num_row">Number of Rows</string>
-    <string name="txt_num_column">Number of Columns</string>
     <string name="txt_start">Start</string>
     <string name="txt_hint">HINT</string>
     <string name="txt_puzzle_solved">Puzzle solved!</string>

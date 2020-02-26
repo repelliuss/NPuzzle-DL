@@ -26,13 +26,13 @@ public final class SlidePuzzleAdapter<T>
         extends RecyclerView.Adapter<SlidePuzzleAdapter<T>.ViewHolder> {
 
     private final SlidePuzzle<T> puzzle;
-    private LayoutInflater inflater;
-    private Resources resources;
-    private GameEventHandler handler;
-    private TextView moveNum;
-    private int pxHeight;
-    private int pxWidth;
-    private MediaPlayer sliding;
+    private final LayoutInflater inflater;
+    private final Resources resources;
+    private final GameEventHandler handler;
+    private final TextView moveNum;
+    private final int pxHeight;
+    private final int pxWidth;
+    private final MediaPlayer sliding;
 
     public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle,
                               final GameEventHandler argHandler, final TextView argMoveNum) {
@@ -56,7 +56,7 @@ public final class SlidePuzzleAdapter<T>
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView number;
+        private final TextView number;
 
         ViewHolder(View itemView) {
             super(itemView);

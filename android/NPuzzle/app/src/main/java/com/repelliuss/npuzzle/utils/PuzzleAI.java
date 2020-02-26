@@ -18,10 +18,10 @@ import java.nio.channels.FileChannel;
 public class PuzzleAI<E extends BoardPiece> implements AI<Move> {
 
     private Interpreter tflite;
-    private String row;
-    private String column;
-    private AppCompatActivity activity;
-    private Puzzle<E> puzzle;
+    private final String row;
+    private final String column;
+    private final AppCompatActivity activity;
+    private final Puzzle<E> puzzle;
     private Move aiLastMove;
 
     public PuzzleAI(final AppCompatActivity argActivity, final Puzzle<E> argPuzzle) {
@@ -83,6 +83,7 @@ public class PuzzleAI<E extends BoardPiece> implements AI<Move> {
 
         String modelFile = row + 'x' + column + ".tflite";
         try {
+            //Tensorflow was using this, couldn't find an alternative
             tflite= new Interpreter(loadModelFile(activity, modelFile));
 
         } catch (IOException e) {

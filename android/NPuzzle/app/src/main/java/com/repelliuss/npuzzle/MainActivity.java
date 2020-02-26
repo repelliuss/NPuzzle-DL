@@ -7,21 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
-import android.graphics.pdf.PdfDocument;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.EditText;
 
 import com.repelliuss.npuzzle.ui.MenuAdapter;
 
 public final class MainActivity extends AppCompatActivity {
 
     private Bundle boardSize;
-    private MenuAdapter adapterRow;
-    private MenuAdapter adapterColumn;
     private RecyclerView recyclerViewRow;
     private RecyclerView recyclerViewColumn;
     private SnapHelper snapHelperRow;
@@ -38,8 +32,8 @@ public final class MainActivity extends AppCompatActivity {
         intent = new Intent(this, GameActivity.class);
         buttonClick = MediaPlayer.create(this, R.raw.button_click);
 
-        adapterRow = new MenuAdapter(this);
-        adapterColumn = new MenuAdapter(this);
+        MenuAdapter adapterRow = new MenuAdapter(this);
+        MenuAdapter adapterColumn = new MenuAdapter(this);
 
         recyclerViewRow = findViewById(R.id.rv_row);
         recyclerViewColumn = findViewById(R.id.rv_column);

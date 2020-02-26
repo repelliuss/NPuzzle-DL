@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class PuzzlePieceDecoration extends RecyclerView.ItemDecoration {
 
-    private int columnCount;
-    private int spacing;
+    private final int columnCount;
+    private final int spacing;
 
     public PuzzlePieceDecoration(int argColumnCount, int argSpacing) {
         columnCount = argColumnCount;

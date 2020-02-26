@@ -14,7 +14,7 @@ import com.repelliuss.npuzzle.R;
 public class MenuAdapter
         extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
 
-    private LayoutInflater inflater;
+    private final LayoutInflater inflater;
 
     public MenuAdapter(Context context) {
         inflater = LayoutInflater.from(context);
@@ -40,7 +40,7 @@ public class MenuAdapter
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView number;
+        private final TextView number;
 
         ViewHolder(View itemView) {
             super(itemView);
