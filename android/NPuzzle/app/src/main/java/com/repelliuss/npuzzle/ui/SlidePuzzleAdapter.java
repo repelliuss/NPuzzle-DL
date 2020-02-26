@@ -2,6 +2,8 @@ package com.repelliuss.npuzzle.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import com.repelliuss.npuzzle.game.GameStatus;
 import com.repelliuss.npuzzle.game.SlidePuzzle;
 import com.repelliuss.npuzzle.utils.Index2D;
 import com.repelliuss.npuzzle.utils.Move;
+import com.repelliuss.npuzzle.utils.Screen;
 
 public final class SlidePuzzleAdapter<T>
         extends RecyclerView.Adapter<SlidePuzzleAdapter<T>.ViewHolder> {
@@ -26,6 +29,8 @@ public final class SlidePuzzleAdapter<T>
     private Resources resources;
     private GameEventHandler handler;
     private TextView moveNum;
+    private int pxHeight;
+    private int pxWidth;
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,6 +39,23 @@ public final class SlidePuzzleAdapter<T>
         ViewHolder(View itemView) {
             super(itemView);
             number = itemView.findViewById(R.id.txt_number);
+
+            float viewHeight = pxHeight / puzzle.getRow();
+            float viewWidth = pxWidth / puzzle.getColumn();
+            float viewSize = viewHeight < viewWidth ? viewHeight : viewWidth;
+
+            float maxHeight = pxHeight / 3;
+            float maxWidth = pxWidth / 3;
+            float maxSize = maxHeight < maxWidth ? maxHeight : maxWidth;
+
+            ViewGroup.LayoutParams layoutParams = number.getLayoutParams();
+            layoutParams.height = (int) viewSize;
+            layoutParams.width = (int) viewSize;
+            number.setLayoutParams(layoutParams);
+
+            float textSize = viewSize * 24 / maxSize;
+            textSize =  textSize < 14f ? 14f : textSize;
+            number.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
         }
 
         TextView getTextView() {
@@ -48,6 +70,15 @@ public final class SlidePuzzleAdapter<T>
         puzzle = argPuzzle;
         handler = argHandler;
         moveNum = argMoveNum;
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
+        dpHeight /= 1.5f;
+        pxHeight = Screen.dpToPixel(dpHeight, context.getResources());
+
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        dpWidth -= 40;
+        pxWidth = Screen.dpToPixel(dpWidth, context.getResources());
     }
 
     @Override
