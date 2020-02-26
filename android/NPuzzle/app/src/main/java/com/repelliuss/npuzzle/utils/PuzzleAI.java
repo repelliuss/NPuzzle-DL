@@ -22,12 +22,14 @@ public class PuzzleAI<E extends BoardPiece> implements AI<Move> {
     private String column;
     private AppCompatActivity activity;
     private Puzzle<E> puzzle;
+    private Move aiLastMove;
 
     public PuzzleAI(final AppCompatActivity argActivity, final Puzzle<E> argPuzzle) {
         puzzle = argPuzzle;
         row = String.valueOf(puzzle.getRow());
         column = String.valueOf(puzzle.getColumn());
         activity = argActivity;
+        aiLastMove = Move.STAY;
 
         loadModel();
     }
@@ -62,7 +64,9 @@ public class PuzzleAI<E extends BoardPiece> implements AI<Move> {
 
             validMoves[direction] = false;
             move = Move.toMove(direction);
-        }while(move == Move.toOpposite(puzzle.getLastMove()) || !puzzle.checkMove(move));
+        }while(move == Move.toOpposite(aiLastMove) || !puzzle.checkMove(move));
+
+        aiLastMove = move;
 
         return move;
     }
