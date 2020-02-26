@@ -101,7 +101,7 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
     @Override
     public float[][] getInputBoard() {
 
-        float[][] inputBoard = new float[getRow()][getColumn()];
+        float[][] inputBoard = new float[1][getColumn()*getRow()];
 
         Index2D pos = new Index2D();
         for (pos.setY(0); pos.getY() < getRow(); pos.incY()) {
@@ -109,8 +109,9 @@ public final class NPuzzle extends SlidePuzzle<Integer> {
                 Piece piece = getPiece(pos);
 
                 if(piece.getId() == Cell.VALUE)
-                    inputBoard[pos.getY()][pos.getX()] = getPiece(pos).getValue() / 9.0f;
-                else inputBoard[pos.getY()][pos.getX()] = 0.0f;
+                    inputBoard[0][pos.getY() * getColumn() + pos.getX()] =
+                            getPiece(pos).getValue() / ((float)(getRow() * getColumn() - 1));
+                else inputBoard[0][pos.getY() * getColumn() + pos.getX()] = 0.0f;
             }
         }
 
