@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import android.content.Intent;
 import android.graphics.pdf.PdfDocument;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,7 @@ public final class MainActivity extends AppCompatActivity {
     private SnapHelper snapHelperRow;
     private SnapHelper snapHelperColumn;
     private Intent intent;
+    private MediaPlayer buttonClick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public final class MainActivity extends AppCompatActivity {
 
         boardSize = new Bundle(2);
         intent = new Intent(this, GameActivity.class);
+        buttonClick = MediaPlayer.create(this, R.raw.button_click);
 
         adapterRow = new MenuAdapter(this);
         adapterColumn = new MenuAdapter(this);
@@ -57,6 +60,7 @@ public final class MainActivity extends AppCompatActivity {
         if(view.getId() == R.id.btn_start) {
             boardSize = getBoardSize();
             intent.putExtras(boardSize);
+            buttonClick.start();
             startActivity(intent);
         }
     }

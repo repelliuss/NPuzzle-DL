@@ -2,6 +2,7 @@ package com.repelliuss.npuzzle.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.media.MediaPlayer;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -31,6 +32,7 @@ public final class SlidePuzzleAdapter<T>
     private TextView moveNum;
     private int pxHeight;
     private int pxWidth;
+    private MediaPlayer sliding;
 
     public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle,
                               final GameEventHandler argHandler, final TextView argMoveNum) {
@@ -39,6 +41,8 @@ public final class SlidePuzzleAdapter<T>
         puzzle = argPuzzle;
         handler = argHandler;
         moveNum = argMoveNum;
+
+        sliding = MediaPlayer.create(context, R.raw.sliding);
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
@@ -135,12 +139,12 @@ public final class SlidePuzzleAdapter<T>
                 break;
         }
 
+        sliding.start();
         notifyItemMoved(oldPos, newPos);
         if(blankMove == Move.UP)
             notifyItemMoved(newPos + 1, oldPos);
         else if(blankMove == Move.DOWN)
             notifyItemMoved(newPos - 1, oldPos);
-
 
         moveNum.setText(String.valueOf(puzzle.getMoveCount()));
         if(puzzle.getStatus() == GameStatus.FINISHED) handler.onGameFinish();

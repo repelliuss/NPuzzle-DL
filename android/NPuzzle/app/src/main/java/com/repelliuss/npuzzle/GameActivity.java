@@ -5,6 +5,7 @@ import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -35,6 +36,8 @@ public class GameActivity extends AppCompatActivity
     private Puzzle<SlidePuzzle<Integer>.Piece> puzzle;
     private GestureDetectorCompat detector;
     private AI<Move> ai;
+    private MediaPlayer buttonClick;
+    private MediaPlayer gameWin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,9 @@ public class GameActivity extends AppCompatActivity
         puzzle = nPuzzle;
         adapter = new SlidePuzzleAdapter<>(this, nPuzzle, this, moveNum);
         recyclerView = findViewById(R.id.rv_game_area);
-        ai = new PuzzleAI(GameActivity.this, puzzle);
+        ai = new PuzzleAI<>(GameActivity.this, puzzle);
+        buttonClick = MediaPlayer.create(this, R.raw.button_click);
+        gameWin = MediaPlayer.create(this, R.raw.game_win);
 
         moveNum.setText(String.valueOf(puzzle.getMoveCount()));
         configurePuzzleView();
@@ -84,6 +89,8 @@ public class GameActivity extends AppCompatActivity
         boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
 
+        gameWin.start();
+
         // show the popup window
         // which view you pass in doesn't matter, it is only used for the window tolken
         popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
@@ -105,6 +112,8 @@ public class GameActivity extends AppCompatActivity
     }
 
     public void onNewGameClick(View view) {
+
+        buttonClick.start();
         finish();
     }
 
