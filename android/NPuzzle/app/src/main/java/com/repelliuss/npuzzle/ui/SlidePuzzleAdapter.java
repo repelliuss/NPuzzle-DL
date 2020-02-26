@@ -32,6 +32,24 @@ public final class SlidePuzzleAdapter<T>
     private int pxHeight;
     private int pxWidth;
 
+    public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle,
+                              final GameEventHandler argHandler, final TextView argMoveNum) {
+        inflater = LayoutInflater.from(context);
+        resources = context.getResources();
+        puzzle = argPuzzle;
+        handler = argHandler;
+        moveNum = argMoveNum;
+
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
+        dpHeight /= 1.5f;
+        pxHeight = Screen.dpToPixel(dpHeight, context.getResources());
+
+        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
+        dpWidth -= 40;
+        pxWidth = Screen.dpToPixel(dpWidth, context.getResources());
+    }
+
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView number;
@@ -61,24 +79,6 @@ public final class SlidePuzzleAdapter<T>
         TextView getTextView() {
             return number;
         }
-    }
-
-    public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle,
-                              final GameEventHandler argHandler, final TextView argMoveNum) {
-        inflater = LayoutInflater.from(context);
-        resources = context.getResources();
-        puzzle = argPuzzle;
-        handler = argHandler;
-        moveNum = argMoveNum;
-
-        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        float dpHeight = displayMetrics.heightPixels / displayMetrics.density;
-        dpHeight /= 1.5f;
-        pxHeight = Screen.dpToPixel(dpHeight, context.getResources());
-
-        float dpWidth = displayMetrics.widthPixels / displayMetrics.density;
-        dpWidth -= 40;
-        pxWidth = Screen.dpToPixel(dpWidth, context.getResources());
     }
 
     @Override
