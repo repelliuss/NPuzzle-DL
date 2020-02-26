@@ -65,12 +65,12 @@ public final class SlidePuzzleAdapter<T>
         if(piece.getId() == SlidePuzzle.Cell.VALUE) {
             holder.getTextView().setText(String.valueOf(piece.getValue()));
             holder.getTextView().setBackgroundColor(
-                    ResourcesCompat.getColor(resources, R.color.colorPrimaryDark, null));
+                    ResourcesCompat.getColor(resources, R.color.colorWineDregs, null));
         }
         else {
             holder.getTextView().setText("");
             holder.getTextView().setBackgroundColor(
-                    ResourcesCompat.getColor(resources, R.color.colorYellow, null));
+                    ResourcesCompat.getColor(resources, R.color.colorGainsboro, null));
         }
     }
 
