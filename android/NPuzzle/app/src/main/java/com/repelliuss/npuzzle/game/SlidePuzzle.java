@@ -131,7 +131,9 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
 
             incMoveCount();
             setLastMove(move);
-            if(isSolved()) setStatus(GameStatus.FINISHED);
+            if(isSolved())
+                setStatus(GameStatus.FINISHED);
+            else setStatus(GameStatus.ONGOING);
 
             return true;
         }
