@@ -46,38 +46,3 @@ tensorboard = TensorBoard(log_dir=f'logs/{NAME}')
 checkpoint = ModelCheckpoint("models/{}.h5".format(filepath, monitor='val_accuracy', verbose=1, save_best_only=True, mode='max'))
 
 model.fit(train_data, train_label, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=2, validation_data=(valid_data, valid_label), callbacks=[tensorboard, checkpoint])
-
-'''
-model.add(LSTM(128, input_shape=(1,9), return_sequences=True, kernel_regularizer=regularizers.l2(0.001)))
-model.add(BatchNormalization())
-model.add(LSTM(128, return_sequences=True, kernel_regularizer=regularizers.l2(0.001)))
-model.add(BatchNormalization())
-model.add(LSTM(128, kernel_regularizer=regularizers.l2(0.001)))
-model.add(BatchNormalization())
-model.add(Dense(64, activation='relu'))
-model.add(Dense(4, activation='softmax'))
-
-model.add(Bidirectional(LSTM(128, input_shape=(1,9), return_sequences=True), input_shape=(1,9)))
-model.add(Bidirectional(LSTM(128)))
-model.add(Dense(4, activation='softmax'))
-3 3 40
-3 4 55
-3 5 70
-3 6 85
-3 7 100
-3 8 115
-3 9 130
-4 3 50
-4 4 60
-4 5 70
-4 6 80
-4 7 90
-4 8 100
-4 9 110
-5x4
-3x8 256batch
-'''
-
-
-
-
