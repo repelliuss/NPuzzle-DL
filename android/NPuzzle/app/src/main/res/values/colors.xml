@@ -4,4 +4,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorYellow">#FFFF00</color>
+    <color name="colorSalmonPink">#FFA8A9</color>
+    <color name="colorGainsboro">#DBDBDB</color>
+    <color name="colorSpicyMix">#885053</color>
+    <color name="colorWineDregs">#6D2E46</color>
+    <color name="colorDarkPurple">#31263E</color>
 </resources>
