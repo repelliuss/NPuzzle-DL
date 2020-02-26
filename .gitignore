@@ -3,7 +3,6 @@ __pycache__/
 *.pyc
 
 # Built application files
-*.apk
 *.aar
 *.ap_
 *.aab
