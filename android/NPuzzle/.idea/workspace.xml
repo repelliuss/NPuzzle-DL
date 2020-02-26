@@ -10,6 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98e73861-674e-49ef-b2db-325def19ac92" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/Move.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../deep_learning/gen_data.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../deep_learning/gen_data.ipynb" afterDir="false" />
     </list>
@@ -45,8 +46,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+            <state relative-caret-position="465">
+              <caret line="70" column="20" lean-forward="true" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -123,8 +124,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/Move.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="269">
+              <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -153,7 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/Move.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/game/Puzzle.java" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/ui/SlidePuzzleSwipeListener.java" />
@@ -173,6 +173,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/AI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/GameActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/Move.java" />
       </list>
     </option>
   </component>
@@ -647,15 +648,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/Move.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="269">
+          <caret line="46" column="19" lean-forward="true" selection-start-line="46" selection-start-column="19" selection-end-line="46" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+        <state relative-caret-position="465">
+          <caret line="70" column="20" lean-forward="true" selection-start-line="70" selection-start-column="20" selection-end-line="70" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

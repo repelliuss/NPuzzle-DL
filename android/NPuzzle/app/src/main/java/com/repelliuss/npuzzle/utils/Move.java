@@ -64,6 +64,6 @@ public enum Move {
                 return UP;
         }
 
-        return STAY;
+        return null;
     }
 }
