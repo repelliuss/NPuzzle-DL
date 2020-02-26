@@ -180,7 +180,14 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
                 Move.swap(moveList, moveIndex, range--);
                 moveIndex = random.nextInt(range);
             }
-            Move.swap(moveList, moveIndex, moveList.length - 1);
+
+            Move opposite = Move.toOpposite(moveList[moveIndex]);
+            int oppositeIndex = 0;
+            for(int j = 0; j < moveList.length; ++j)
+                if(moveList[j] == opposite)
+                    oppositeIndex = j;
+
+            Move.swap(moveList, oppositeIndex, moveList.length - 1);
             range = moveList.length - 1;
             moveIndex = random.nextInt(range);
         }
