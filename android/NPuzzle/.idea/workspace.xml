@@ -10,7 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98e73861-674e-49ef-b2db-325def19ac92" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../deep_learning/gen_data.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/../../deep_learning/gen_data.ipynb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
@@ -33,20 +33,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/GameActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
+            <state relative-caret-position="-30">
               <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="269">
+              <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -168,8 +171,8 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/game/NPuzzle.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/AI.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/GameActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java" />
       </list>
     </option>
   </component>
@@ -191,6 +194,24 @@
             <path>
               <item name="NPuzzle" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="NPuzzle" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="NPuzzle" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="npuzzle" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NPuzzle" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="npuzzle" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NPuzzle" type="1abcf292:AndroidViewProjectNode" />
@@ -377,6 +398,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" id="Project" order="1" visible="true" weight="0.30049807" />
@@ -566,15 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/GameActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
+        <state relative-caret-position="-30">
           <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -634,6 +649,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
           <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/repelliuss/npuzzle/utils/PuzzleAI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="42" column="7" lean-forward="true" selection-start-line="42" selection-start-column="7" selection-end-line="42" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

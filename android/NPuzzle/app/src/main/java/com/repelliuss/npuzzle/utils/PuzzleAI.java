@@ -32,6 +32,15 @@ public class PuzzleAI<E extends BoardPiece> implements AI<Move> {
         loadModel();
     }
 
+    /**
+     * This method gives input board to appropriate model and
+     * takes its predictions. First it takes prediction with
+     * highest value, then it looks if the prediction it
+     * made is a valid move or does it get the board to the 1
+     * move before position. If it does, then it takes next
+     * highest prediction until a valid one.
+     * @return valid, appropriate prediction with highest value
+     */
     @Override
     public Move predict() {
 
