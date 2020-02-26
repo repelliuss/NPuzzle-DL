@@ -4,4 +4,7 @@
     <string name="txt_num_column">Number of Columns</string>
     <string name="txt_start">Start</string>
     <string name="txt_hint">HINT</string>
+    <string name="txt_puzzle_solved">Puzzle solved!</string>
+    <string name="txt_new_game">New Game</string>
+    <string name="txt_move">Move:</string>
 </resources>

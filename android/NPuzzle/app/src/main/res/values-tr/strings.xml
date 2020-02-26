@@ -4,4 +4,7 @@
     <string name="txt_num_column">Sütun Sayısı</string>
     <string name="txt_start">Başlat</string>
     <string name="txt_hint">İPUCU</string>
+    <string name="txt_puzzle_solved">Bulmaca çözüldü!</string>
+    <string name="txt_new_game">Yeni Oyun</string>
+    <string name="txt_move">Hamle:</string>
 </resources>
