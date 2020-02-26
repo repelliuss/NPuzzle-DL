@@ -51,6 +51,7 @@ public class GameActivity extends AppCompatActivity
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         final NPuzzle nPuzzle;
+        TextView moveNum = findViewById(R.id.txt_move_num);
 
         if(extras != null) {
             nPuzzle = new NPuzzle(extras.getInt(getString(R.string.key_row_count)),
@@ -59,8 +60,9 @@ public class GameActivity extends AppCompatActivity
         else nPuzzle = new NPuzzle(3, 3);
 
         puzzle = nPuzzle;
-        adapter = new SlidePuzzleAdapter<>(this, nPuzzle, this);
+        adapter = new SlidePuzzleAdapter<>(this, nPuzzle, this, moveNum);
         recyclerView = findViewById(R.id.rv_game_area);
+        moveNum.setText(String.valueOf(puzzle.getMoveCount()));
 
         configurePuzzleView();
         activateSwipe();

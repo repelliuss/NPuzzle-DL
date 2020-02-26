@@ -25,6 +25,7 @@ public final class SlidePuzzleAdapter<T>
     private LayoutInflater inflater;
     private Resources resources;
     private GameEventHandler handler;
+    private TextView moveNum;
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -41,11 +42,12 @@ public final class SlidePuzzleAdapter<T>
     }
 
     public SlidePuzzleAdapter(Context context, final SlidePuzzle<T> argPuzzle,
-                              final GameEventHandler argHandler) {
+                              final GameEventHandler argHandler, final TextView argMoveNum) {
         inflater = LayoutInflater.from(context);
         resources = context.getResources();
         puzzle = argPuzzle;
         handler = argHandler;
+        moveNum = argMoveNum;
     }
 
     @Override
@@ -108,6 +110,8 @@ public final class SlidePuzzleAdapter<T>
         else if(blankMove == Move.DOWN)
             notifyItemMoved(newPos - 1, oldPos);
 
+
+        moveNum.setText(String.valueOf(puzzle.getMoveCount()));
         if(puzzle.getStatus() == GameStatus.FINISHED) handler.onGameFinish();
     }
 }
