@@ -13,7 +13,7 @@ public abstract class SlidePuzzle<T> implements Puzzle<SlidePuzzle<T>.Piece> {
     private int moveCount;
     private GameStatus status;
     private final int MIN_RANDOM_MOVE = 200;
-    private final int EXTRA_RANDOM_MOVE = 200;
+    private final int EXTRA_RANDOM_MOVE = 1;
 
     public enum Cell {
         VALUE,
