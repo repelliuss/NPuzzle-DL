@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="200" height="200" src="https://b.allthepics.net/rpsLogo.png">
+  <img width="200" height="200" src="https://i.imgur.com/VOIqPTP.png">
 </p>
 
 # NPuzzle ML
