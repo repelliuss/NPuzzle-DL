@@ -18,7 +18,7 @@
 ## General Info
 &nbsp;&nbsp;&nbsp;&nbsp;NPuzzle is a typical sliding puzzle game. The letter 'N' comes from word "number" which makes *NPuzzle DL* a number sliding puzzle game.
 
-&nbsp;&nbsp;&nbsp;&nbsp;*NPuzzle DL* is developed for Android environment. It also contains an AI to help user to solve puzzle. Deep learning techniques used to train AI with recurrent neural networks and LSTM. Currently, models give around %62 accurate on average for all board sizes (3x3, 3x4, ..., 9x8, 9x9). They are capable to solve light complex boards themselves but should be better for more complex situations.
+&nbsp;&nbsp;&nbsp;&nbsp;*NPuzzle DL* is developed for Android environment. It also contains an AI to help user to solve puzzle. Deep learning techniques used to train AI with recurrent neural networks and LSTM. Currently, models give around %62 accurate on average for all board sizes (3x3, 3x4, ..., 9x8, 9x9). They are capable to solve light complex boards themselves but should be waaay better for more complex situations.
 
 &nbsp;&nbsp;&nbsp;&nbsp;*NPuzzle DL* written in Java and Python, utilized Tensorflow and Jupyter Notebook.
 
